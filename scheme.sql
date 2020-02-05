@@ -8,19 +8,19 @@ CREATE TABLE managers
     unit    TEXT,
     boss_id INTEGER REFERENCES managers
 );
-drop table sales
 CREATE TABLE products
 (
     id    INTEGER PRIMARY KEY AUTOINCREMENT,
     name  TEXT    NOT NULL UNIQUE,
     price INTEGER NOT NULL CHECK ( price > 0 ),
-    qty INTEGER NOT NULL CHECK ( qty > 0 )
+    qty   INTEGER NOT NULL CHECK ( qty > 0 )
 );
 
-CREATE TABLE sales (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE sales
+(
+    id        INTEGER PRIMARY KEY AUTOINCREMENT,
     manager_id INTEGER NOT NULL REFERENCES managers,
     product_id INTEGER NOT NULL REFERENCES products,
-    qty INTEGER NOT NULL CHECK ( qty > 0 ),
-    price INTEGER NOT NULL CHECK ( price > 0 )
+    qty        INTEGER NOT NULL CHECK ( qty > 0 ),
+    price      INTEGER NOT NULL CHECK ( price > 0 )
 );
